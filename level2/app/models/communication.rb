@@ -9,4 +9,10 @@ class Communication < ApplicationRecord
     }
   end
 
+  def self.all_as_json(options = nil)
+  	all.includes(:practitioner).map do |communication|
+  		communication.as_json
+  	end
+  end
+
 end
